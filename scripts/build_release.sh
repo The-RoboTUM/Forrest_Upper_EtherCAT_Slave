@@ -8,7 +8,7 @@ else
 fi
 DEVICE_UPPERCASE=$(printf '%s' "$DEVICE" | tr '[:lower:]' '[:upper:]')
 DEVICE_MEM_SIZE=1024
-DEVICE_PACKAGE="F100"
+DEVICE_PACKAGE="F144"
 
 echo "Building release target for $DEVICE..."
 

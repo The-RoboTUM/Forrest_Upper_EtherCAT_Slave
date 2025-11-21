@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug",
+      "cwd": "${workspaceRoot}",
+      "executable": "./build/upper_leg_ecat_slave.elf",
+      "request": "launch",
+      "type": "cortex-debug",
+      "servertype": "jlink",
+      "interface": "swd",
+      "device": "XMC4800-F144x1024",
+      "runToEntryPoint": "main",
+    }
+  ]
+}

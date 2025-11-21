@@ -15,20 +15,21 @@ add_library(xmc STATIC
     ${FREERTOS_ROOT_PATH}/list.c
     ${FREERTOS_ROOT_PATH}/event_groups.c
     ${FREERTOS_ROOT_PATH}/croutine.c
-    ${FREERTOS_ROOT_PATH}/portable/GCC/ARM_CM4_MPU/port.c
+    ${FREERTOS_ROOT_PATH}/portable/GCC/ARM_CM4F/port.c
+    ${FREERTOS_ROOT_PATH}/portable/MemMang/heap_4.c
 )
 
 target_include_directories(xmc PUBLIC 
+    # Project
     # XMC lib
     ${XMC_LIB_ROOT_PATH}/XMCLib/inc
     # CMSIS
     ${CMSIS_ROOT_PATH}/Include
     ${CMSIS_ROOT_PATH}/Infineon/${DEVICE}_series/Include
     # FreeRTOS
+    ${CMAKE_SOURCE_DIR}/inc # For FreeRTOSConfig.h
     ${FREERTOS_ROOT_PATH}/include
-    ${FREERTOS_ROOT_PATH}/portable/GCC/ARM_CM4_MPU
-    # Project
-    ${CMAKE_SOURCE_DIR}/inc # path to project include directory for FreeRTOSConfig.h
+    ${FREERTOS_ROOT_PATH}/portable/GCC/ARM_CM4F
 )
 
 target_compile_definitions(xmc PRIVATE
