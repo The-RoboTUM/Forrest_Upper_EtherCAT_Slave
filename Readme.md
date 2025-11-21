@@ -12,3 +12,10 @@ Run either the debug or release build script:
 - `./scripts/build_debug.sh`
 - `./scripts/build_release.sh`
 
+## Flashing and debugging
+You can flash using
+- `./scripts/flash.sh`
+
+And open a new GDB tui session with
+- `./scripts/debug.sh`
+alternatively, you can also use the Cortex-Debug extension on VS Code for easier debugging.
