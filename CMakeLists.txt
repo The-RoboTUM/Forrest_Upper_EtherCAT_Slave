@@ -7,6 +7,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(XMC_LIB_ROOT_PATH "/opt/XMCLib/XMC_Peripheral_Library_v2.1.16/")
 
 # Add executable
+set(CMAKE_EXECUTABLE_SUFFIX ".elf")
 add_executable(${PROJECT_NAME})
 
 target_sources(${PROJECT_NAME} PRIVATE
