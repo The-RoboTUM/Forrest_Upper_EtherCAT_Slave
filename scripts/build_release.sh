@@ -1,7 +1,16 @@
 #!/bin/bash
 
+DEVICE=""
+if [[ $1 == "xmc4500" ]]; then
+    DEVICE="xmc4500"
+else
+    DEVICE="xmc4800"
+fi
+DEVICE_UPPERCASE=$(printf '%s' "$DEVICE" | tr '[:lower:]' '[:upper:]')
+
 cmake -S . -B build \
-  -DCMAKE_TOOLCHAIN_FILE=toolchain/arm-xmc4800-toolchain.cmake \
-  -DCMAKE_BUILD_TYPE=Release
+  -DCMAKE_TOOLCHAIN_FILE=toolchain/arm-$DEVICE-toolchain.cmake \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DDEVICE=$DEVICE_UPPERCASE
 
 cmake --build build
