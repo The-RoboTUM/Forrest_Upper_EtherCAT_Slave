@@ -8,7 +8,7 @@ else
     DEVICE="xmc4800"
 fi
 DEVICE_UPPERCASE=$(printf '%s' "$DEVICE" | tr '[:lower:]' '[:upper:]')
-MEMORY_SIZE=1024
+DEVICE_MEM_SIZE=1024
 
 # Generate JLink commands file
 cat > build/JLinkCommands <<EOF
@@ -20,4 +20,4 @@ q
 EOF
 
 # Flash
-JLinkExe -Device $DEVICE_UPPERCASE-$MEMORY_SIZE -If SWD -Speed 1000 -CommanderScript build/JLinkCommands
+JLinkExe -Device $DEVICE_UPPERCASE-$DEVICE_MEM_SIZE -If SWD -Speed 1000 -CommanderScript build/JLinkCommands

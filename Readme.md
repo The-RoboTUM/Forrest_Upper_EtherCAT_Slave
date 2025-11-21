@@ -5,7 +5,6 @@ Ethercat slave controller forwarding I2C sensor data.
 From a Unix environment, make sure to have the following tools and libraries installed on your computer:
 - ARM GNU toolchain: You can download [here](https://developer.arm.com/downloads/-/gnu-rm)
 - SEGGER Programming tools: Download the J-Link Software and Documentation Pack [here](https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPac)
-- XMC library: install v2.1.16 of the XMC library into the `/opt` directory.
 
 ## Building the project
 Run either the debug or release build script:
