@@ -81,3 +81,13 @@ target_include_directories(usb PUBLIC
 target_compile_definitions(usb PRIVATE
     ${DEVICE}_${DEVICE_PACKAGE}x${DEVICE_MEM_SIZE}
 )
+
+###########################################################
+########################## AS5600 #########################
+add_library(as5600 STATIC
+    ${CMAKE_SOURCE_DIR}/third-party/as5600/driver_as5600.c
+)
+
+target_include_directories(as5600 PUBLIC
+    ${CMAKE_SOURCE_DIR}/third-party/as5600
+)

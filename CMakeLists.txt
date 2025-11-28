@@ -21,6 +21,7 @@ add_executable(${PROJECT_NAME})
 
 target_sources(${PROJECT_NAME} PRIVATE
     ${CMAKE_SOURCE_DIR}/src/main.cpp
+    ${CMAKE_SOURCE_DIR}/src/encoder.cpp
     ${CMAKE_SOURCE_DIR}/src/logging/logging.cpp
     ${CMAKE_SOURCE_DIR}/src/logging/VirtualSerial.c
     ${CMAKE_SOURCE_DIR}/src/logging/Descriptors.c
@@ -50,4 +51,5 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     nosys
     xmc
     usb
+    as5600
 )
