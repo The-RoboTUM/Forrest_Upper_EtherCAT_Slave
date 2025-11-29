@@ -1,16 +1,21 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "logging.h"
+#include "encoder.h"
 
-static void test_task(void* pvParams) {
+static void test_task(void *pvParams)
+{
     (void)pvParams;
 
-    int i = 0;
-    while (1) {
-        vTaskDelay(pdMS_TO_TICKS(1000));
+    Encoder encoder(Encoder::CHANNEL_0);
 
-        logger_println("Main", "Hello %d", i);
-        i++;
+    float angle_deg = 0;
+    while (1)
+    {
+        vTaskDelay(pdMS_TO_TICKS(600));
+
+        encoder.read(&angle_deg);
+        logger_println("Main", "Angle %f", angle_deg);
     }
 }
 
@@ -24,7 +29,8 @@ int main(void)
     vTaskStartScheduler();
 
     // Should never get here
-    while (1) {
+    while (1)
+    {
     }
 
     return 0;

@@ -8,6 +8,7 @@ add_library(xmc STATIC
     # XMC lib
     ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc_gpio.c
     ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc4_gpio.c
+    ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc_i2c.c
     ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc_uart.c
     ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc_usic.c
     ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc4_scu.c
