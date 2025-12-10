@@ -7,7 +7,7 @@ else
     DEVICE="xmc4800"
 fi
 DEVICE_UPPERCASE=$(printf '%s' "$DEVICE" | tr '[:lower:]' '[:upper:]')
-DEVICE_MEM_SIZE=1024
+DEVICE_MEM_SIZE=2048
 DEVICE_PACKAGE="F144"
 
 echo "Building release target for $DEVICE..."

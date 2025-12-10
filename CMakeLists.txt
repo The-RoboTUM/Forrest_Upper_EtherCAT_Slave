@@ -43,6 +43,7 @@ target_compile_options(${PROJECT_NAME} PRIVATE
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
     ${DEVICE}_${DEVICE_PACKAGE}x${DEVICE_MEM_SIZE}
+    XMC_ETH_PHY_DP83848C
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE

@@ -16,6 +16,11 @@ add_library(xmc STATIC
     ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc4_eru.c
     ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc_eru.c
     ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc_usbd.c
+    ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc_ecat.c
+    ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc_eth_mac.c
+    ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc_eth_phy_dp83848.c
+    ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc_eth_phy_ksz8031rnl.c
+    ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc_eth_phy_ksz8081rnb.c
     # CMSIS
     ${CMSIS_ROOT_PATH}/Infineon/${DEVICE}_series/Source/system_${DEVICE}.c
     ${CMSIS_ROOT_PATH}/Infineon/${DEVICE}_series/Source/GCC/startup_${DEVICE}.S
@@ -81,6 +86,7 @@ target_include_directories(usb PUBLIC
 
 target_compile_definitions(usb PRIVATE
     ${DEVICE}_${DEVICE_PACKAGE}x${DEVICE_MEM_SIZE}
+    XMC_ETH_PHY_DP83848C
 )
 
 ###########################################################
