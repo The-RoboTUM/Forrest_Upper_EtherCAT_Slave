@@ -1,5 +1,5 @@
-# 🦿 Upper Leg Ethercat Sensor Slave Controler
-Ethercat slave controller forwarding I2C sensor data.
+# 🦿 Upper Leg Ethercat Sensor Slave
+Ethercat slave forwarding I2C sensor data.
 
 ## Setup
 From a Unix environment, make sure to have the following tools and libraries installed on your computer:
