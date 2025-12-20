@@ -106,6 +106,7 @@ add_library(soes STATIC
     ${SOES_ROOT_PATH}/esc.c
     ${SOES_ROOT_PATH}/hal/xmc4/esc_hw_eep.c
     ${SOES_ROOT_PATH}/hal/xmc4/esc_hw.c
+    ${XMC_LIB_ROOT_PATH}/ThirdPartyLibraries/Newlib/syscalls.c
 )
 
 target_include_directories(soes PUBLIC
@@ -117,6 +118,10 @@ target_include_directories(soes PUBLIC
     ${XMC_LIB_ROOT_PATH}/XMCLib/inc
     ${CMSIS_ROOT_PATH}/Include
     ${CMSIS_ROOT_PATH}/Infineon/${DEVICE}_series/Include
+)
+
+target_compile_options(soes PRIVATE
+  -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard
 )
 
 target_compile_definitions(soes PRIVATE
