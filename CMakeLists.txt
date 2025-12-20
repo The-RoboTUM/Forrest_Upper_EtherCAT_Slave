@@ -8,13 +8,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(XMC_LIB_VERSION "2.1.16")
 set(XMC_LIB_ROOT_PATH "${CMAKE_SOURCE_DIR}/third-party/XMC_Peripheral_Library_v${XMC_LIB_VERSION}/")
 
-# For now, we only support XMC4500 or XM4800
-if(NOT DEVICE MATCHES "^XMC4[58]00$")
-    message(FATAL_ERROR "Target '${TARGET}' not supported.")
-else()
-    message("Building for target ${DEVICE}")
-endif()
-
 # Add executable
 set(CMAKE_EXECUTABLE_SUFFIX ".elf")
 add_executable(${PROJECT_NAME})
@@ -52,4 +45,5 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     xmc
     usb
     as5600
+    soes
 )

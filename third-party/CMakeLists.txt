@@ -1,9 +1,11 @@
-###########################################################
-######################## XMC LIBRARY ######################
 
 set(CMSIS_ROOT_PATH ${XMC_LIB_ROOT_PATH}/CMSIS)
 set(FREERTOS_ROOT_PATH ${XMC_LIB_ROOT_PATH}/ThirdPartyLibraries/FreeRTOS/Source)
+set(USB_LIB_ROOT_PATH ${CMAKE_SOURCE_DIR}/third-party/USB)
+set(SOES_ROOT_PATH ${CMAKE_SOURCE_DIR}/third-party/soes)
 
+###########################################################
+######################## XMC LIBRARY ######################
 add_library(xmc STATIC
     # XMC lib
     ${XMC_LIB_ROOT_PATH}/XMCLib/src/xmc_gpio.c
@@ -49,7 +51,6 @@ target_compile_definitions(xmc PRIVATE
 
 ###########################################################
 ######################## USB LIBRARY ######################
-set(USB_LIB_ROOT_PATH ${CMAKE_SOURCE_DIR}/third-party/USB)
 add_library(usb STATIC
     ${USB_LIB_ROOT_PATH}/Class/
     ${USB_LIB_ROOT_PATH}/Class/Common/HIDParser.c
@@ -91,4 +92,33 @@ add_library(as5600 STATIC
 
 target_include_directories(as5600 PUBLIC
     ${CMAKE_SOURCE_DIR}/third-party/as5600
+)
+
+
+###########################################################
+########################### SOES ##########################
+add_library(soes STATIC
+    ${SOES_ROOT_PATH}/ecat_slv.c
+    ${SOES_ROOT_PATH}/esc_coe.c
+    ${SOES_ROOT_PATH}/esc_eep.c
+    ${SOES_ROOT_PATH}/esc_eoe.c
+    ${SOES_ROOT_PATH}/esc_foe.c
+    ${SOES_ROOT_PATH}/esc.c
+    ${SOES_ROOT_PATH}/hal/xmc4/esc_hw_eep.c
+    ${SOES_ROOT_PATH}/hal/xmc4/esc_hw.c
+)
+
+target_include_directories(soes PUBLIC
+    ${SOES_ROOT_PATH}
+    ${SOES_ROOT_PATH}/hal
+    ${SOES_ROOT_PATH}/include
+    ${SOES_ROOT_PATH}/include/sys/gcc
+    ${CMAKE_SOURCE_DIR}/inc
+    ${XMC_LIB_ROOT_PATH}/XMCLib/inc
+    ${CMSIS_ROOT_PATH}/Include
+    ${CMSIS_ROOT_PATH}/Infineon/${DEVICE}_series/Include
+)
+
+target_compile_definitions(soes PRIVATE
+    ${DEVICE}_${DEVICE_PACKAGE}x${DEVICE_MEM_SIZE}
 )
