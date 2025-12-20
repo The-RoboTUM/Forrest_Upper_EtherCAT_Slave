@@ -1,14 +1,9 @@
 #!/bin/bash
 
 # Select target device
-DEVICE=""
-if [[ "$1" == "xmc4500" ]]; then
-    DEVICE="xmc4500"
-else
-    DEVICE="xmc4800"
-fi
+DEVICE="xmc4800"
 DEVICE_UPPERCASE=$(printf '%s' "$DEVICE" | tr '[:lower:]' '[:upper:]')
-DEIVCE_MEM_SIZE=1024
+DEIVCE_MEM_SIZE=2048
 
 echo "file build/upper_leg_ecat_slave.elf;target remote localhost:2331;monitor reset;load;break main;" | sed 's/;/\n/g' > build/GDBCommands
 
