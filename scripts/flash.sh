@@ -1,14 +1,9 @@
 #!/bin/bash
 
 # Select target device
-DEVICE=""
-if [[ "$1" == "xmc4500" ]]; then
-    DEVICE="xmc4500"
-else
-    DEVICE="xmc4800"
-fi
+DEVICE="xmc4800"
 DEVICE_UPPERCASE=$(printf '%s' "$DEVICE" | tr '[:lower:]' '[:upper:]')
-DEVICE_MEM_SIZE=1024
+DEVICE_MEM_SIZE=2048
 
 # Generate JLink commands file
 cat > build/JLinkCommands <<EOF
