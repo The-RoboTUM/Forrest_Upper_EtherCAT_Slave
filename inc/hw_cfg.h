@@ -4,6 +4,7 @@
 #include "xmc_gpio.h"
 #include "xmc_usic.h"
 
+#define PIN_LED             P5_8
 #define PIN_ENCODER_I2C_SCL P0_13
 #define PIN_ENCODER_I2C_SDA P3_15
 
