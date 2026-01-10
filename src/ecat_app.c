@@ -11,6 +11,10 @@ uint8_t * txpdo = (uint8_t *)&Obj.Encoder1;
 
 void cb_get_inputs (void)
 {
+   // return some dummy data
+   Obj.Encoder1 = 0xAAAA;
+   Obj.Encoder2 = 0xBBBB;
+   Obj.IMU = 0xCCCC;
 }
 
 void cb_set_outputs (void)
@@ -19,7 +23,7 @@ void cb_set_outputs (void)
 
 void ecat_app_task(void* pvParams)
 {
-    (void)pvParams;
+   (void)pvParams;
 
    /* Setup config hooks */
    static esc_cfg_t config = {
@@ -49,8 +53,8 @@ void ecat_app_task(void* pvParams)
    // configure I/O
    XMC_GPIO_Init(PIN_LED, &gpio_config_led);
 
+   // Start
    ecat_slv_init (&config);
-
    while (1) {
       ecat_slv();
    }

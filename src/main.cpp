@@ -2,8 +2,9 @@
 #include "task.h"
 #include "logging.h"
 #include "encoder.h"
+#include "ecat_app.h"
 
-static void test_task(void *pvParams)
+static void sensors_read_task(void *pvParams)
 {
     (void)pvParams;
 
@@ -21,10 +22,9 @@ static void test_task(void *pvParams)
 
 int main(void)
 {
-    logger_init();
-
     // Create RTOS tasks
-    xTaskCreate(test_task, "test_task", 256, NULL, tskIDLE_PRIORITY + 1, NULL);
+    xTaskCreate(sensors_read_task, "sensors_task", 256, NULL, tskIDLE_PRIORITY + 1, NULL);
+    xTaskCreate(ecat_app_task, "ecat_task", 256, NULL, tskIDLE_PRIORITY + 1, NULL);
 
     vTaskStartScheduler();
 
