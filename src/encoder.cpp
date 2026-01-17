@@ -152,17 +152,30 @@ Encoder::Encoder(Encoder::Channel channel)
     }
 }
 
-int Encoder::read(float *deg)
+Encoder* Encoder::getInstance(enum Channel ch)
+{
+    static Encoder inst(Encoder::CHANNEL_0);
+    return &inst;
+}
+
+uint32_t Encoder::read(void)
+{
+    return this->_cacheData;
+}
+
+int Encoder::fetch(void)
 {
     uint8_t res;
     uint16_t angle_raw;
+    float dummy;
 
-    res = as5600_read(&this->sensor_handle, &angle_raw, deg);
+    res = as5600_read(&this->sensor_handle, &angle_raw, &dummy);
     if (res != 0)
     {
         logger_println(LOG_TAG, "as5600 read failed.\n");
         return -1;
     }
 
-    return 0;
+    this->_cacheData = angle_raw * (360*ENCODER_SCALE) / (4096*ENCODER_SCALE);
+    return res;
 }

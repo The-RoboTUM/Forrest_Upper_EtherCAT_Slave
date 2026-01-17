@@ -1,7 +1,10 @@
+extern "C" {
 #include "ecat_app.h"
 #include "ecat_slv.h"
+}
 #include "hw_cfg.h"
 #include "utypes.h"
+#include "encoder.h"
 
 extern void ESC_eep_handler(void);
 
@@ -12,7 +15,7 @@ uint8_t * txpdo = (uint8_t *)&Obj.Encoder1;
 void cb_get_inputs (void)
 {
    // return some dummy data
-   Obj.Encoder1 = 0xAAAA;
+   Obj.Encoder1 = enc0->read();
    Obj.Encoder2 = 0xBBBB;
    Obj.IMU = 0xCCCC;
 }

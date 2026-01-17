@@ -8,15 +8,14 @@ static void sensors_read_task(void *pvParams)
 {
     (void)pvParams;
 
-    Encoder encoder(Encoder::CHANNEL_0);
+    Encoder* enc0 = Encoder::getInstance(Encoder::CHANNEL_0);
 
     float angle_deg = 0;
     while (1)
     {
-        vTaskDelay(pdMS_TO_TICKS(600));
+        enc0->fetch();
 
-        encoder.read(&angle_deg);
-        logger_println("Main", "Angle %f", angle_deg);
+        vTaskDelay(pdMS_TO_TICKS(600));
     }
 }
 

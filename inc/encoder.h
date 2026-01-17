@@ -4,11 +4,10 @@
 #include "driver_as5600.h"
 #include "xmc_gpio.h"
 
+#define ENCODER_SCALE 1000
+
 class Encoder
 {
-private:
-    as5600_handle_t sensor_handle;
-
 public:
     enum Channel
     {
@@ -17,9 +16,16 @@ public:
         CHANNEL_COUNT
     };
 
-    Encoder(Channel channel);
+    static Encoder* getInstance(enum Channel ch);
 
-    int read(float *deg);
+    uint32_t read(void);
+    int      fetch(void);
+
+private:
+    as5600_handle_t sensor_handle;
+    uint32_t        _cacheData;
+
+    Encoder(Channel channel);
 };
 
 #endif // ENCODER_H

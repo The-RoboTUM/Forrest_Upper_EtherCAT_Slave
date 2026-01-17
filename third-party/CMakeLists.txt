@@ -122,6 +122,7 @@ target_include_directories(soes PUBLIC
     ${SOES_ROOT_PATH}/include
     ${SOES_ROOT_PATH}/include/sys/gcc
     ${CMAKE_SOURCE_DIR}/inc
+    ${CMAKE_SOURCE_DIR}/third-party/as5600
     ${XMC_LIB_ROOT_PATH}/XMCLib/inc
     ${CMSIS_ROOT_PATH}/Include
     ${CMSIS_ROOT_PATH}/Infineon/${DEVICE}_series/Include
